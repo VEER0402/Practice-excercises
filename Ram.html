@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Shree Ram</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 999;
+            color: #fff;
+            font-size: 2em;
+        }
+
+        #showManyButton {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="jayShreeRam">Jay Shree Ram</div>
+    <button id="showManyButton" onclick="JayShreeRam()">RAM</button>
+
+    <script>
+        function JayShreeRam() {
+            
+            const overlay = document.createElement('div');
+            overlay.id = 'overlay';
+
+            
+            for (let i = 0; i < 50; i++) {
+                const jayShreeRam = document.createElement('div');
+                jayShreeRam.textContent = 'Jay Shree Ram';
+                jayShreeRam.style.color = getRandomColor();
+                overlay.appendChild(jayShreeRam);
+            }
+
+            
+            document.body.appendChild(overlay);
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>
