@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #container {
+      text-align: center;
+    }
+
+    #digital-clock {
+      font-size: 48px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    #calendar {
+      font-size: 18px;
+      color: #666;
+    }
+  </style>
+  <script>
+    function DigitalClock() {
+      const now = new Date();
+      const hours = formatTimeUnit(now.getHours());
+      const minutes = formatTimeUnit(now.getMinutes());
+      const seconds = formatTimeUnit(now.getSeconds());
+
+      const digitalClock = document.getElementById('digital-clock');
+      digitalClock.textContent = `${hours}:${minutes}:${seconds}`;
+
+      const calendar = document.getElementById('calendar');
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      calendar.textContent = now.toLocaleDateString('en-US', options);
+    }
+
+    function formatTimeUnit(unit) {
+      return unit < 10 ? `0${unit}` : unit;
+    }
+
+    setInterval(updateDigitalClock, 1000);
+    DigitalClock(); 
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div id="digital-clock"></div>
+    <div id="calendar"></div>
+  </div>
+</body>
+</html>
